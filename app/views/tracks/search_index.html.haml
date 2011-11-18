@@ -1,0 +1,19 @@
+
+.large
+  Your search returned #{@tracks.size} track(s).
+
+%table
+  %tr
+    %th Artist
+    %th Album
+    %th Title
+    %th Number on album
+    %th Playtime
+  - @tracks.each do |track|
+    %tr
+      %td= track.album.artist.name
+      %td= track.album.title      
+      %td= track.title
+      %td= track.number_on_album
+      %td= track.playtime
+

@@ -1,0 +1,29 @@
+
+%nav
+  .span-2
+    - if user_signed_in?
+      = link_to_unless_current "New Artist", new_artist_path
+    &#160;
+  .span-2
+    - if user_signed_in?
+      = link_to_unless_current "New Album", new_album_path
+    &#160;
+  .span-2
+    - if user_signed_in?
+      = link_to_unless_current "My Albums", :controller => "albums",
+      :action => "user_index"
+    &#160;
+  .span-2
+    = link_to_unless_current "All Albums", albums_path      
+  .span-2
+    - if user_signed_in?
+      = link_to_unless_current "Find Album", :controller => "albums",
+      :action => "search"
+    &#160;
+  .span-2
+    - if user_signed_in?
+      = link_to_unless_current "Find Track", :controller => "tracks",
+      :action => "search"
+    &#160;
+  .span-2.append-4.last
+    = link_to_unless_current "All Users", users_index_path

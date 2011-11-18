@@ -1,0 +1,14 @@
+# use glob syntax.
+syntax: glob
+
+samples
+#.bundle
+db/*.sqlite3
+log/*.log
+tmp/*
+*~
+*.orig
+old
+REVISION
+doc/scratch*
+public/system/covers/*

@@ -1,0 +1,13 @@
+
+.large
+  Edit your comment
+
+= form_for(@comment, :html => { :class => "inline" }) do |f|
+  .span-10.append-8.last.clear
+    = f.text_area :comment, :size => "30x5",
+    :class => "text span-10 comment"
+  .span-2.clear
+    = f.submit "Save"
+  .span-2.append-14.last
+    = link_to "Cancel", @comment.commentable
+  

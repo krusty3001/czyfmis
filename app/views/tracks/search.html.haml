@@ -1,0 +1,9 @@
+
+.large
+  Find Track
+
+= form_tag({ :action => "search_index" }, { :class => "inline" }) do
+  Find track by artist or title
+  %br
+  = text_field_tag :searchword, "", { :class => "text" }
+  = submit_tag "Go"

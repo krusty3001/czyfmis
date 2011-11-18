@@ -1,0 +1,16 @@
+
+YFMIS sample cd archive web application
+=======================================
+
+You need to have imagemagick installed in order to process uploaded covers.
+
+In Ubuntu, you can run
+
+$ sudo aptitude install imagemagick libmagick9-dev
+$ whereis convert
+
+Please adjust path in config/environments/development.rb where necessary:
+Paperclip.options[:command_path] = "/usr/bin/"
+
+
+

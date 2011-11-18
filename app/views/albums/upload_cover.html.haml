@@ -1,0 +1,18 @@
+.large
+  Upload Cover
+
+%p
+  %b Artist:
+  = @album.artist.name
+  
+%p
+  %b Title:
+  = @album.title
+
+%p
+  - form_for(@album, :html => { :multipart => true, :class => "inline" }) do |f|
+    = f.file_field :cover
+    %br
+    = f.submit "Upload"
+
+  

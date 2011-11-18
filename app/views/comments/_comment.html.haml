@@ -1,0 +1,14 @@
+
+%hr
+
+= simple_format(comment.comment)
+.quiet
+  &ndash; #{comment.user.email} at
+  #{comment.updated_at.strftime("%Y-%m-%d %H:%M")}
+
+- if can? :edit, comment    
+  = link_to "Edit", edit_comment_path(comment)
+- if can? :destroy, comment
+  = link_to "Delete", comment, :confirm => 'Are you sure?', :method => :delete
+
+%hr.space

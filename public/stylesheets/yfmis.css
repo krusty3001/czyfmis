@@ -1,0 +1,18 @@
+
+div.right_side {
+  text-align: right;
+}
+
+textarea.comment {
+  height: 45px;
+}
+
+/* Hack: Copied from grid.css and scaffold.css */
+.field_with_errors {
+  background: #fbe3e4; 
+  color: #8a1f11; 
+  border-color: #fbc2c4;
+
+  padding: 2px;
+  display: table;
+}

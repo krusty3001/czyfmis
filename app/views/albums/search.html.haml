@@ -1,0 +1,9 @@
+
+.large
+  Find Album
+
+= form_tag({ :action => "search_index" }, { :class => "inline" }) do
+  Find album by artist or title
+  %br
+  = text_field_tag :searchword, "", { :class => "text" }
+  = submit_tag "Go"

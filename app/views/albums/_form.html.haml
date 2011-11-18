@@ -1,0 +1,44 @@
+.span-18.last
+  = form_for(setup_album(@album), :html => { :class => "inline" }) do |f|
+    - if @album.errors.any?
+      .error
+        .large
+          = pluralize(@album.errors.count, "error")
+          prohibited this album from being saved:
+        %ul
+          - @album.errors.full_messages.each do |msg|
+            %li= msg
+    .span-4.clear
+      = f.label :artist_id, "Artist*"
+    .span-8.append-6.last
+      = f.collection_select :artist_id, current_user.artists, :id, :name, {},
+      { :class => "text span-8" }
+    .span-4.clear
+      = f.label :title, "Title*"
+    .span-13.append-1.last    
+      = f.text_field :title, :class => "text span-13"
+    .span-4.clear
+      = f.label :released_at
+    .span-13.append-1.last
+      = f.date_select :released_at, {  :start_year => 1900,
+      :include_blank => true }, { :class => "text" }
+    .span-18.clear
+      %hr.space
+    .span-18.clear.large
+      Tracks
+    .span-2.clear
+      Number
+    .span-11
+      Title
+    .span-4.prepend-1.last
+      Playtime (mm:ss)  
+    - f.fields_for :tracks, @album.sorted_tracks do |builder|
+      .span-1.append-1.clear
+        = builder.text_field :number_on_album, :class => "text span-1",
+        :readonly => true
+      .span-11
+        = builder.text_field :title, :class => "text span-11"
+      .span-2.prepend-1.append-2.last
+        = builder.text_field :playtime, :class => "text span-2"
+    .span-18.clear.last
+      = f.submit

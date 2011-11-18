@@ -1,0 +1,56 @@
+
+.span-8
+  = image_tag @album.cover.url(:medium) if @album.cover.file?
+  &#160;  
+
+.span-10.last
+  .span-3.large
+    Artist
+  .span-7.large.last
+    = @album.artist.name
+  .span-3.large.clear
+    Title
+  .span-7.large.last
+    = @album.title
+  .span-3.large.clear
+    Released at
+  .span-7.large.last
+    = @album.released_at
+  .span-3.large.clear
+    User
+  .span-7.large.last
+    = @album.artist.user.email
+
+.span-18.clear.last
+  &#160;
+  &#160;
+
+.span-18.clear.last
+  %table
+    %tr
+      %th 
+      %th Title
+      %th Playtime
+    - @album.tracks.each do |track|
+      %tr
+        %td= track.number_on_album
+        %td= track.title
+        %td= track.playtime
+  
+.span-18.clear.last
+  Add comment
+  
+= form_for(@album, :html => { :class => "inline" }) do |f|
+  - f.fields_for :comments, @album.comments.last do |builder|
+    .span-10.append-8.last.clear
+      = builder.text_area :comment, :size => "30x5",
+      :class => "text span-10 comment"
+      = builder.hidden_field :user_id
+  .span-18.clear.last
+    = f.submit "Save"
+
+.span-18.clear.last
+  &#160;    
+    
+.span-18.clear.last
+  = render @album.saved_comments

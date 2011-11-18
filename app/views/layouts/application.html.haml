@@ -1,0 +1,42 @@
+!!!
+%html
+  %head
+    %title Yfmis
+    = stylesheet_link_tag 'blueprint/screen', :media => 'screen'
+    = stylesheet_link_tag 'blueprint/print', :media => 'print'
+    = stylesheet_link_tag 'yfmis'
+    = javascript_include_tag :defaults
+    = csrf_meta_tag
+  %body
+    .container
+      .span-2
+        / Left sidebar
+        &#160;
+      .span-18.last
+        .span-18.last
+          &#160;        
+        .span-6.append-4
+          %h1 YFMIS
+        - if user_signed_in?
+          .span-8.last.right_side
+            = current_user.email
+            %br
+            = link_to "Sign Out", destroy_user_session_path,
+          :method => :delete
+        - else
+          .span-3= link_to "Sign In", new_user_session_path
+          .span-3.last= link_to "Sign Up", new_user_registration_path
+        .span-18.last
+          = render :partial => "layouts/navigation"
+        .span-18.last
+          &#160;
+        .span-18.last
+          - if notice
+            .notice= notice
+          - if alert
+            .error= alert
+        .span-18.last
+          = yield
+      .span-4.last
+        / Right sidebar
+        &#160;

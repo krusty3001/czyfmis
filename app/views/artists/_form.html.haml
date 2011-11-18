@@ -1,0 +1,25 @@
+= form_for(@artist, :html => { :class => "inline" }) do |f|
+  - if @artist.errors.any?
+    .error
+      .large
+        = pluralize(@artist.errors.count, "error")
+        prohibited this artist from being saved:
+      %ul
+        - @artist.errors.full_messages.each do |msg|
+          %li= msg
+  .span-3.clear
+    = f.label :name, "Name*"
+  .span-9.append-6.last
+    = f.text_field :name, :class => "text span-9"
+  .span-3.clear
+    = f.label :country
+  .span-9.append-6.last
+    = f.select :country, country_values, { :include_blank => true },
+    { :class => "text span-9" }
+  .span-3.clear
+    = f.label :started_at
+  .span-9.append-6.last
+    = f.select :started_at, started_at_values, { :include_blank => true },
+    { :class => "text" }
+  .span-18.clear.last
+    = f.submit
